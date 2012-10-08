@@ -2470,7 +2470,7 @@ DigiWebApp.RequestController = M.Controller.extend({
      */
     , errorCallback: {}
     
-    , softwareVersion: 2347
+    , softwareVersion: 2348
 
 
     /**
@@ -5449,6 +5449,7 @@ DigiWebApp.ApplicationController = M.Controller.extend({
 	, useSplashJustForFade: NO
 	
 	, makeUnselectable: function(node) {
+		return;
 	    if (node.nodeType == 1) {
 	        node.unselectable = true;
 	    }
@@ -8726,6 +8727,7 @@ DigiWebApp.EmployeeController = M.Controller.extend({
             var employees = DigiWebApp.Employee.findSorted();
             if(employees.length > 0) {
                 employees = _.map(employees, function(em) {
+                	console.log(em);
                     return { label: em.get('name'), value: em.get('id') };
                 });
                 this.set('employees', employees);
@@ -9340,7 +9342,7 @@ DigiWebApp.InfoPage = M.PageView.design({
         }),
 
         buildLabel: M.LabelView.design({
-            value: 'Build: 2347',
+            value: 'Build: 2348',
             cssClass: 'infoLabel marginBottom25 unselectable'
         }),
 
@@ -13191,7 +13193,7 @@ DigiWebApp.EmployeePage = M.PageView.design({
         }
     },
 
-    cssClass: 'bookTimePage',
+    //cssClass: 'bookTimePage',
 
     header: M.ToolbarView.design({
         cssClass: 'header',
@@ -13207,7 +13209,7 @@ DigiWebApp.EmployeePage = M.PageView.design({
             selectionMode: M.MULTIPLE_SELECTION,
             label: M.I18N.l('employees'),
             //cssClass: 'infoLabel',
-            applyTheme: NO,
+            //applyTheme: NO,
             contentBinding: {
                 target: DigiWebApp.EmployeeController,
                 property: 'employees'
