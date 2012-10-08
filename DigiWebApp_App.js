@@ -107,262 +107,6 @@ DigiWebApp.Employee = M.Model.create({
 
 // ==========================================================================
 // The M-Project - Mobile HTML5 Application Framework
-// Generated with: Espresso 
-//
-// Project: DigiWebApp
-// Model: Position
-// ==========================================================================
-
-DigiWebApp.Position = M.Model.create({
-
-    /* Define the name of your model. Do not delete this property! */
-    __name__: 'Position'
-
-    , id: M.Model.attr('String',{
-    	isRequired: NO
-    })
-
-    , name: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , strasse: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , hausnummer: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , plz: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , ort: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , land: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , countrycode: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , telefon: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , fax: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , email: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , ansprechpartner: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , kundenname: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , longitude: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , latitude: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , description: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , orderId: M.Model.attr('String', {
-        isRequired: NO
-    })
-
-    , deleteAll: function() {
-        _.each(this.find(), function(el) {
-            el.del();
-        });
-    }
-
-    , findSorted: function() {
-        var that = this;
-        var keys = [];
-        try {
-            keys = JSON.parse(localStorage.getItem(DigiWebApp.ApplicationController.storagePrefix + '_' + this.name.toLowerCase() + 'Keys'));
-        } catch(e) {
-        	console.log("ERROR in " + this.name + ".findSorted: " + e);
-        }
-
-        var records = [];
-
-        if(keys){
-            _.each(keys, function(k) {
-                records.push(that.find({key:M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + that.name + '_' + k}));
-            });
-        }
-        return records;
-    }
-
-}, M.DataProviderLocalStorage);
-// ==========================================================================
-// The M-Project - Mobile HTML5 Application Framework
-// Generated with: Espresso 
-//
-// Project: DigiWebApp
-// Model: SentBooking
-// ==========================================================================
-
-DigiWebApp.SentBooking = M.Model.create({
-
-    /* Define the name of your model. Do not delete this property! */
-    __name__: 'SentBooking',
-
-    fileName: M.Model.attr('String', {
-        isRequired: NO
-    }),
-
-    fileType: M.Model.attr('String', {
-        isRequired: NO
-    }),
-
-    orderId: M.Model.attr('String',{
-        isRequired: NO
-    }),
-
-    timeStampStart: M.Model.attr('String', {
-        isRequired: NO
-    }),
-
-    timeStampEnd: M.Model.attr('String', {
-        isRequired: NO
-    }),
-
-    date: M.Model.attr('String', { // is aggregated by the two timestamp values above
-
-    }),
-
-    latitude: M.Model.attr('String', {
-        isRequired:NO
-    }),
-
-    longitude: M.Model.attr('String', {
-        isRequired: NO
-    }),
-
-    handOrderName: M.Model.attr('String', {
-        isRequired: NO
-    }),
-
-    handOrderId: M.Model.attr('String', {
-        isRequired: NO
-    }),
-
-    positionId: M.Model.attr('String', {
-        isRequired: NO
-    }),
-
-    activityId: M.Model.attr('String', {
-        isRequired: NO
-    }),
-
-    isCurrent: M.Model.attr('Boolean', {
-        isRequired: NO
-    }),
-
-    employees: M.Model.attr('String', {
-        isRequired: NO
-    }),
-
-    remark: M.Model.attr('String', {
-        isRequired: NO
-    }),
-
-    closeBooking: function() {
-        this.set('timeStampEnd', +new Date());
-    },
-
-    setRemark: function(v) {
-        this.set('remark', v);
-    },
-
-    setAsCurrent: function() {
-        this.set('isCurrent', YES);
-    },
-
-    removeAsCurrent: function() {
-        this.set('isCurrent', NO);
-    },
-
-    deleteAll: function() {
-        _.each(this.find(), function(el) {
-            el.del();
-        });
-    }
-
-}, M.DataProviderLocalStorage);
-
-// ==========================================================================
-// The M-Project - Mobile HTML5 Application Framework
-// Generated with: Espresso 
-//
-// Project: DigiWebApp
-// Model: Activity
-// ==========================================================================
-
-DigiWebApp.Activity = M.Model.create({
-
-    /* Define the name of your model. Do not delete this property! */
-    __name__: 'Activity',
-
-    id: M.Model.attr('String', {
-        isRequired: NO
-    }),
-
-    name: M.Model.attr('String', {
-        isRequired: NO
-    }),
-    
-    positionId: M.Model.attr('String',{
-            isRequired: NO // 0: nicht MA-zugeordnet, 1: MA-zugeordnet
-    }),
-
-    deleteAll: function() {
-        _.each(this.find(), function(el) {
-            el.del();
-        });
-    },
-
-    findSorted: function() {
-        var that = this;
-        var keys = [];
-        try {
-            keys = JSON.parse(localStorage.getItem(DigiWebApp.ApplicationController.storagePrefix + '_' + this.name.toLowerCase() + 'Keys'));
-        } catch(e) {
-        	console.log("ERROR in " + this.name + ".findSorted: " + e);
-        }
-
-        var records = [];
-
-        if(keys){
-            _.each(keys, function(k) {
-                records.push(that.find({key:M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + that.name + '_' + k}));
-            });
-        }
-        return records;
-    }
-
-}, M.DataProviderLocalStorage);
-
-// ==========================================================================
-// The M-Project - Mobile HTML5 Application Framework
 // Generated with: Espresso
 //
 // Project: DigiWebApp
@@ -1349,6 +1093,262 @@ DigiWebApp.Features = M.Model.create({
         _.each(this.find(), function(el) {
             el.del();
         });
+    }
+
+}, M.DataProviderLocalStorage);
+
+// ==========================================================================
+// The M-Project - Mobile HTML5 Application Framework
+// Generated with: Espresso 
+//
+// Project: DigiWebApp
+// Model: Position
+// ==========================================================================
+
+DigiWebApp.Position = M.Model.create({
+
+    /* Define the name of your model. Do not delete this property! */
+    __name__: 'Position'
+
+    , id: M.Model.attr('String',{
+    	isRequired: NO
+    })
+
+    , name: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , strasse: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , hausnummer: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , plz: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , ort: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , land: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , countrycode: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , telefon: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , fax: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , email: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , ansprechpartner: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , kundenname: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , longitude: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , latitude: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , description: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , orderId: M.Model.attr('String', {
+        isRequired: NO
+    })
+
+    , deleteAll: function() {
+        _.each(this.find(), function(el) {
+            el.del();
+        });
+    }
+
+    , findSorted: function() {
+        var that = this;
+        var keys = [];
+        try {
+            keys = JSON.parse(localStorage.getItem(DigiWebApp.ApplicationController.storagePrefix + '_' + this.name.toLowerCase() + 'Keys'));
+        } catch(e) {
+        	console.log("ERROR in " + this.name + ".findSorted: " + e);
+        }
+
+        var records = [];
+
+        if(keys){
+            _.each(keys, function(k) {
+                records.push(that.find({key:M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + that.name + '_' + k}));
+            });
+        }
+        return records;
+    }
+
+}, M.DataProviderLocalStorage);
+// ==========================================================================
+// The M-Project - Mobile HTML5 Application Framework
+// Generated with: Espresso 
+//
+// Project: DigiWebApp
+// Model: SentBooking
+// ==========================================================================
+
+DigiWebApp.SentBooking = M.Model.create({
+
+    /* Define the name of your model. Do not delete this property! */
+    __name__: 'SentBooking',
+
+    fileName: M.Model.attr('String', {
+        isRequired: NO
+    }),
+
+    fileType: M.Model.attr('String', {
+        isRequired: NO
+    }),
+
+    orderId: M.Model.attr('String',{
+        isRequired: NO
+    }),
+
+    timeStampStart: M.Model.attr('String', {
+        isRequired: NO
+    }),
+
+    timeStampEnd: M.Model.attr('String', {
+        isRequired: NO
+    }),
+
+    date: M.Model.attr('String', { // is aggregated by the two timestamp values above
+
+    }),
+
+    latitude: M.Model.attr('String', {
+        isRequired:NO
+    }),
+
+    longitude: M.Model.attr('String', {
+        isRequired: NO
+    }),
+
+    handOrderName: M.Model.attr('String', {
+        isRequired: NO
+    }),
+
+    handOrderId: M.Model.attr('String', {
+        isRequired: NO
+    }),
+
+    positionId: M.Model.attr('String', {
+        isRequired: NO
+    }),
+
+    activityId: M.Model.attr('String', {
+        isRequired: NO
+    }),
+
+    isCurrent: M.Model.attr('Boolean', {
+        isRequired: NO
+    }),
+
+    employees: M.Model.attr('String', {
+        isRequired: NO
+    }),
+
+    remark: M.Model.attr('String', {
+        isRequired: NO
+    }),
+
+    closeBooking: function() {
+        this.set('timeStampEnd', +new Date());
+    },
+
+    setRemark: function(v) {
+        this.set('remark', v);
+    },
+
+    setAsCurrent: function() {
+        this.set('isCurrent', YES);
+    },
+
+    removeAsCurrent: function() {
+        this.set('isCurrent', NO);
+    },
+
+    deleteAll: function() {
+        _.each(this.find(), function(el) {
+            el.del();
+        });
+    }
+
+}, M.DataProviderLocalStorage);
+
+// ==========================================================================
+// The M-Project - Mobile HTML5 Application Framework
+// Generated with: Espresso 
+//
+// Project: DigiWebApp
+// Model: Activity
+// ==========================================================================
+
+DigiWebApp.Activity = M.Model.create({
+
+    /* Define the name of your model. Do not delete this property! */
+    __name__: 'Activity',
+
+    id: M.Model.attr('String', {
+        isRequired: NO
+    }),
+
+    name: M.Model.attr('String', {
+        isRequired: NO
+    }),
+    
+    positionId: M.Model.attr('String',{
+            isRequired: NO // 0: nicht MA-zugeordnet, 1: MA-zugeordnet
+    }),
+
+    deleteAll: function() {
+        _.each(this.find(), function(el) {
+            el.del();
+        });
+    },
+
+    findSorted: function() {
+        var that = this;
+        var keys = [];
+        try {
+            keys = JSON.parse(localStorage.getItem(DigiWebApp.ApplicationController.storagePrefix + '_' + this.name.toLowerCase() + 'Keys'));
+        } catch(e) {
+        	console.log("ERROR in " + this.name + ".findSorted: " + e);
+        }
+
+        var records = [];
+
+        if(keys){
+            _.each(keys, function(k) {
+                records.push(that.find({key:M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + that.name + '_' + k}));
+            });
+        }
+        return records;
     }
 
 }, M.DataProviderLocalStorage);
@@ -2470,7 +2470,7 @@ DigiWebApp.RequestController = M.Controller.extend({
      */
     , errorCallback: {}
     
-    , softwareVersion: 2342
+    , softwareVersion: 2343
 
 
     /**
@@ -5717,40 +5717,40 @@ DigiWebApp.ApplicationController = M.Controller.extend({
                 //return false;
             });
 
-            _.each(DigiWebApp.app.pages, function(myPage) {
-    			try { $('#' + myPage.id).bind('touchstart', function(ev) {
-                	console.log("resetting clickCounter");
-                    that.clickCounter = 0;
-                    //console.log("not starting wipecontroller");
-                    //DigiWebApp.WipeController.regTouchStart(myPage.id, ev);
-                    //return false;
-                    //return true;
-                }); } catch (e) { console.log("error while bind touchstart for " + myPage.id);}
-                try { $('#' + myPage.id).bind('mousedown', function(ev) {
-                	console.log("resetting clickCounter");
-                    that.clickCounter = 0;
-                    //console.log("not starting wipecontroller");
-                    //DigiWebApp.WipeController.regTouchStart(myPage.id, ev);
-                    //return false;
-                    //return true;
-                }); } catch (e) { console.log("error while bind mousedown for " + myPage.id);}
-    			if (typeof(myPage.header) !== "undefined") {
-    				try { $('#'+ myPage.header.id).bind('touchstart', function(ev) {
-    	                that.clickCounter += 1;
-    	                if(that.clickCounter > that.clickLimit) {
-    	                    that.showConfirmDialog();
-    	                }
-    	                //return false;
-    	            }); } catch (e) { console.log("error while bind touchstart for " + myPage.header.id);} 				
-    				try { $('#'+ myPage.header.id).bind('mousedown', function(ev) {
-    	                that.clickCounter += 1;
-    	                if(that.clickCounter > that.clickLimit) {
-    	                    that.showConfirmDialog();
-    	                }
-    	                //return false;
-    	            }); } catch (e) { console.log("error while bind mousedown for " + myPage.header.id);}
-    			}
-    		});
+//            _.each(DigiWebApp.app.pages, function(myPage) {
+//    			try { $('#' + myPage.id).bind('touchstart', function(ev) {
+//                	console.log("resetting clickCounter");
+//                    that.clickCounter = 0;
+//                    //console.log("not starting wipecontroller");
+//                    //DigiWebApp.WipeController.regTouchStart(myPage.id, ev);
+//                    //return false;
+//                    //return true;
+//                }); } catch (e) { console.log("error while bind touchstart for " + myPage.id);}
+//                try { $('#' + myPage.id).bind('mousedown', function(ev) {
+//                	console.log("resetting clickCounter");
+//                    that.clickCounter = 0;
+//                    //console.log("not starting wipecontroller");
+//                    //DigiWebApp.WipeController.regTouchStart(myPage.id, ev);
+//                    //return false;
+//                    //return true;
+//                }); } catch (e) { console.log("error while bind mousedown for " + myPage.id);}
+//    			if (typeof(myPage.header) !== "undefined") {
+//    				try { $('#'+ myPage.header.id).bind('touchstart', function(ev) {
+//    	                that.clickCounter += 1;
+//    	                if(that.clickCounter > that.clickLimit) {
+//    	                    that.showConfirmDialog();
+//    	                }
+//    	                //return false;
+//    	            }); } catch (e) { console.log("error while bind touchstart for " + myPage.header.id);} 				
+//    				try { $('#'+ myPage.header.id).bind('mousedown', function(ev) {
+//    	                that.clickCounter += 1;
+//    	                if(that.clickCounter > that.clickLimit) {
+//    	                    that.showConfirmDialog();
+//    	                }
+//    	                //return false;
+//    	            }); } catch (e) { console.log("error while bind mousedown for " + myPage.header.id);}
+//    			}
+//    		});
 
         	if ( M.Environment.getPlatform().substr(0,10) === "BlackBerry" ) {
         		console.log("registering emergencyhandler");
@@ -9340,7 +9340,7 @@ DigiWebApp.InfoPage = M.PageView.design({
         }),
 
         buildLabel: M.LabelView.design({
-            value: 'Build: 2342',
+            value: 'Build: 2343',
             cssClass: 'infoLabel marginBottom25 unselectable'
         }),
 
