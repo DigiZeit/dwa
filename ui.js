@@ -5103,7 +5103,7 @@ M.SelectionListView = M.View.extend(
 
         } else {
 
-            this.html += '<fieldset data-role="controlgroup" data-native-menu="false" id="' + this.id + '">';
+            this.html += '<fieldset data-role="controlgroup" data-native-menu="true" id="' + this.id + '">';
 
             if(this.label) {
                 this.html += '<legend>' + this.label + '</legend>';
