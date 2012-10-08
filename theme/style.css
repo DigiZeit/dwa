@@ -22,8 +22,6 @@ body {
 		        backface-visibility: hidden !important;
 }
 
-*/
-
 .ui-page * {    
 		-webkit-backface-visibility: visible !important;
 		   -moz-backface-visibility: visible !important;
@@ -31,6 +29,8 @@ body {
 		     -o-backface-visibility: visible !important;
 		        backface-visibility: visible !important;
 }
+
+*/
 
 .ui-header .ui-btn-left {
 	margin-top: 0px; /* pre jqm 1.1 (post jqm 1.1: 3px)*/
