@@ -2470,7 +2470,7 @@ DigiWebApp.RequestController = M.Controller.extend({
      */
     , errorCallback: {}
     
-    , softwareVersion: 2350
+    , softwareVersion: 2351
 
 
     /**
@@ -9342,7 +9342,7 @@ DigiWebApp.InfoPage = M.PageView.design({
         }),
 
         buildLabel: M.LabelView.design({
-            value: 'Build: 2350',
+            value: 'Build: 2351',
             cssClass: 'infoLabel marginBottom25 unselectable'
         }),
 
@@ -13434,33 +13434,33 @@ function trackError(ex) {
 }
 
 window.onerror = function (msg, url, line) {
-	trackError('Error: ' + msg + '\nURL: ' + url + '\nLine Number: ' + line);
+	//trackError('Error: ' + msg + '\nURL: ' + url + '\nLine Number: ' + line);
 	return true;
 }
 
-//override jQuery.fn.bind to wrap every provided function in try/catch
-var jQueryBind = jQuery.fn.bind;
-jQuery.fn.bind = function( type, data, fn ) {
-	if ( !fn && data && typeof data == 'function' ) {
-		fn = data;
-		data = null;
-	}
-	if ( fn ) {
-		var origFn = fn;
-		var wrappedFn = function() { 
-			try {
-				//console.log("jQuery.fn.bind: applying function for type '" + type + "'");
-				origFn.apply( this, arguments );
-			} catch ( ex ) {
-				trackError( ex );
-				// re-throw ex iff error should propogate
-				//throw ex;
-			}
-		};
-		fn = wrappedFn;
-	}
-	return jQueryBind.call( this, type, data, fn );
-};
+////override jQuery.fn.bind to wrap every provided function in try/catch
+//var jQueryBind = jQuery.fn.bind;
+//jQuery.fn.bind = function( type, data, fn ) {
+//	if ( !fn && data && typeof data == 'function' ) {
+//		fn = data;
+//		data = null;
+//	}
+//	if ( fn ) {
+//		var origFn = fn;
+//		var wrappedFn = function() { 
+//			try {
+//				//console.log("jQuery.fn.bind: applying function for type '" + type + "'");
+//				origFn.apply( this, arguments );
+//			} catch ( ex ) {
+//				trackError( ex );
+//				// re-throw ex iff error should propogate
+//				//throw ex;
+//			}
+//		};
+//		fn = wrappedFn;
+//	}
+//	return jQueryBind.call( this, type, data, fn );
+//};
 
 
 // Check if a new cache is available on page load.
