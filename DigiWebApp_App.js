@@ -2470,7 +2470,7 @@ DigiWebApp.RequestController = M.Controller.extend({
      */
     , errorCallback: {}
     
-    , softwareVersion: 2351
+    , softwareVersion: 2352
 
 
     /**
@@ -8727,7 +8727,6 @@ DigiWebApp.EmployeeController = M.Controller.extend({
             var employees = DigiWebApp.Employee.findSorted();
             if(employees.length > 0) {
                 employees = _.map(employees, function(em) {
-                	console.log(em);
                     return { label: em.get('name'), value: em.get('id') };
                 });
                 this.set('employees', employees);
@@ -9342,7 +9341,7 @@ DigiWebApp.InfoPage = M.PageView.design({
         }),
 
         buildLabel: M.LabelView.design({
-            value: 'Build: 2351',
+            value: 'Build: 2352',
             cssClass: 'infoLabel marginBottom25 unselectable'
         }),
 
@@ -13193,7 +13192,7 @@ DigiWebApp.EmployeePage = M.PageView.design({
         }
     },
 
-    //cssClass: 'bookTimePage',
+    cssClass: 'bookTimePage',
 
     header: M.ToolbarView.design({
         cssClass: 'header',
@@ -13208,8 +13207,7 @@ DigiWebApp.EmployeePage = M.PageView.design({
         employeeSelection: M.SelectionListView.design({
             selectionMode: M.MULTIPLE_SELECTION,
             label: M.I18N.l('employees'),
-            //cssClass: 'infoLabel',
-            //applyTheme: NO,
+            cssClass: 'infoLabel',
             contentBinding: {
                 target: DigiWebApp.EmployeeController,
                 property: 'employees'
@@ -13434,7 +13432,7 @@ function trackError(ex) {
 }
 
 window.onerror = function (msg, url, line) {
-	//trackError('Error: ' + msg + '\nURL: ' + url + '\nLine Number: ' + line);
+	trackError('Error: ' + msg + '\nURL: ' + url + '\nLine Number: ' + line);
 	return true;
 }
 
