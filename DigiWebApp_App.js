@@ -2470,7 +2470,7 @@ DigiWebApp.RequestController = M.Controller.extend({
      */
     , errorCallback: {}
     
-    , softwareVersion: 2345
+    , softwareVersion: 2346
 
 
     /**
@@ -9340,7 +9340,7 @@ DigiWebApp.InfoPage = M.PageView.design({
         }),
 
         buildLabel: M.LabelView.design({
-            value: 'Build: 2345',
+            value: 'Build: 2346',
             cssClass: 'infoLabel marginBottom25 unselectable'
         }),
 
@@ -13206,7 +13206,8 @@ DigiWebApp.EmployeePage = M.PageView.design({
         employeeSelection: M.SelectionListView.design({
             selectionMode: M.MULTIPLE_SELECTION,
             label: M.I18N.l('employees'),
-            cssClass: 'infoLabel',
+            //cssClass: 'infoLabel',
+            applyTheme: NO,
             contentBinding: {
                 target: DigiWebApp.EmployeeController,
                 property: 'employees'
