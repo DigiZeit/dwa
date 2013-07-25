@@ -2,8 +2,8 @@
 <widget xmlns	= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
 	id		    = "com.digi.webapp"
-	versionCode = "3800"
-	version 	= "1.5.1.3800">
+	versionCode = "3802"
+	version 	= "1.5.1.3802">
 
 	<name>DIGI-WebApp</name>
 
@@ -58,7 +58,7 @@ which PhoneGap requires. -->
 
 <!-- include ChildBrowserPlugIn -->
 	<gap:plugin name="com.phonegap.plugins.childbrowser" />
-	<!-- <gap:plugin name="com.phonegap.plugins.barcodescanner" /> nur in Pro-Version, da Kamera nötig-->
+	<!-- <gap:plugin name="com.phonegap.plugins.barcodescanner" /> nur in Pro-Version, da Kamera nötig -->
 	<gap:plugin name="com.adobe.plugins.pushplugin" />
 
 <!-- if a single icon is specified then Build will use it for all platforms -->
