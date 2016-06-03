@@ -3,8 +3,8 @@
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
 	xmlns:android = "http://schemas.android.com/apk/res/android"
 	id		    = "com.digi.webapp"
-	versionCode = "7046"
-	version 	= "1.8.6.7046">
+	versionCode = "7047"
+	version 	= "1.8.6.7047">
 
 	<name>DIGI-WebApp</name>
 
@@ -35,7 +35,7 @@
   <preference name="fullscreen" value="false" />
 	<preference name="autorotate" value="true" readonly="false" />
   <platform name="ios">
-    <preference name="orientation" value="portrait" />
+    <preference name="orientation" value="default" />
   </platform>
   <platform name="android">
     <preference name="orientation" value="default" />
@@ -98,7 +98,7 @@
   <!-- <gap:plugin name="de.appplant.cordova.plugin.background-mode" version="0.5.0" /> -->
 
   <!-- iOS9 -->
-  <gap:plugin name="cordova-plugin-wkwebview" source="npm" version="0.6.3" />
+  <gap:plugin name="cordova-plugin-wkwebview" source="npm" version="0.6.9" />
 
   <!-- Plugin and config to enable and restrict network access -->
   <gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.2.2" />
@@ -116,7 +116,7 @@
   <allow-intent href="https://*/*" />
 
   <gap:config-file platform="ios" parent="CFBundleShortVersionString"> 
-	  <string>7046</string> 
+	  <string>7047</string> 
   </gap:config-file>
 
   <gap:config-file platform="ios" parent="UIStatusBarHidden">
